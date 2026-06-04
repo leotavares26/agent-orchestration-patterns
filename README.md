@@ -89,6 +89,17 @@ Start simple. Reach for a heavier pattern only when a lighter one demonstrably b
 **Use when:** Tasks span long sessions or need continuity across runs.
 **Avoid when:** Everything fits comfortably in context — don't add a database you don't need.
 
+## 9. Parallel fan-out / gather
+
+**Problem:** A task splits into independent sub-tasks, and running them one after another wastes wall-clock time — the agent sits idle waiting on each call before starting the next.
+
+**Shape:** Scatter the sub-tasks to run concurrently, then gather and merge the results. A coordinator decides the split, fires the workers in parallel, and reconciles their outputs (dedupe, rank, or synthesize).
+
+**Use when:** Sub-tasks are genuinely independent and latency matters — fan-out research across several sources, summarize many documents, or probe a question from multiple angles at once.
+**Avoid when:** Sub-tasks depend on each other's output (you need a pipeline, not a fan-out), or the merge step is harder than the work itself. Watch the cost too — N parallel calls is N times the spend, and rate limits bite faster.
+
+> Distinct from the **Supervisor** pattern: supervision is about *who owns which role*; fan-out is about *doing separable work at the same time*. They compose well — a supervisor that dispatches in parallel instead of in sequence.
+
 ---
 
 ## A rule of thumb
