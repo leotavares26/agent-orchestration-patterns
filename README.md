@@ -100,6 +100,17 @@ Start simple. Reach for a heavier pattern only when a lighter one demonstrably b
 
 > Distinct from the **Supervisor** pattern: supervision is about *who owns which role*; fan-out is about *doing separable work at the same time*. They compose well — a supervisor that dispatches in parallel instead of in sequence.
 
+## 10. Retry & error recovery
+
+**Problem:** Tool calls fail for boring reasons — a timeout, a rate limit, a transient 5xx, a malformed response. An agent that treats every failure as final gives up on tasks that would have succeeded on the second try; one that retries blindly hammers a struggling service and loops forever.
+
+**Shape:** Classify the error before reacting. *Transient* (timeouts, 429s, 503s) → retry with exponential backoff and a capped attempt count. *Malformed* (bad JSON, schema violation) → feed the error back to the model and let it self-correct the next call. *Permanent* (auth failure, 404, invalid input) → stop retrying and escalate. Wrap the whole thing in a budget (max attempts, max wall-clock) so recovery can't run away.
+
+**Use when:** Anything that talks to a network or an external system — which is most real agents.
+**Avoid when:** Nothing, really — but don't retry non-idempotent actions (a charge, an email send) without a dedupe key, or you'll do the thing twice.
+
+> Pairs with **Human-in-the-loop**: when the retry budget is exhausted on a high-stakes action, escalate to a person instead of failing silently or trying forever.
+
 ---
 
 ## A rule of thumb
