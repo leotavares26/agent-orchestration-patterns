@@ -113,6 +113,16 @@ Start simple. Reach for a heavier pattern only when a lighter one demonstrably b
 
 ---
 
+## Worked examples
+
+The patterns above are deliberately prose-first — the tradeoffs matter more than any one implementation. Where a pattern benefits from seeing the control flow in code, there's a runnable, dependency-free example under [`examples/`](examples/):
+
+- [`retry_with_backoff.py`](examples/retry_with_backoff.py) — Pattern #10, error classification + exponential backoff under a budget. Run it with `python examples/retry_with_backoff.py`.
+
+More examples get added alongside the patterns over time.
+
+---
+
 ## A rule of thumb
 
 > Complexity should be *earned*. Every extra agent, loop, or store is another thing that can fail at 2am. Ship the simplest shape that works, measure where it breaks, and add structure exactly there.
