@@ -111,6 +111,17 @@ Start simple. Reach for a heavier pattern only when a lighter one demonstrably b
 
 > Pairs with **Human-in-the-loop**: when the retry budget is exhausted on a high-stakes action, escalate to a person instead of failing silently or trying forever.
 
+## 11. Verifier gate
+
+**Problem:** Models are good at producing plausible answers, but production systems need a sharper question: did this output actually satisfy the contract?
+
+**Shape:** Let the agent draft the answer or action, then run an independent verifier before side effects happen. The verifier can be deterministic (tests, schema validation, policy checks), model-based with a stricter rubric, or both. Only verified outputs move forward; failures route back for repair or escalation.
+
+**Use when:** There is a clear contract to check — generated code, structured extraction, SQL, policy-sensitive messages, or any workflow with irreversible side effects.
+**Avoid when:** There is no reliable success criterion yet. A vague verifier just adds another confident model opinion; write the contract first.
+
+> Keep the verifier smaller than the worker. The best version is often boring: unit tests, JSON Schema, type checks, allowlists, and a short failure message the agent can act on.
+
 ---
 
 ## Worked examples
