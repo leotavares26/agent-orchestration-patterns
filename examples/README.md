@@ -7,9 +7,11 @@ the bits you need — no SDK, no API key, no network.
 | Example | Pattern | What it shows |
 |---|---|---|
 | [`retry_with_backoff.py`](retry_with_backoff.py) | #10 Retry & error recovery | Classifying transient vs. malformed vs. permanent failures, exponential backoff with jitter, and a budget that stops runaway retries. |
+| [`verifier_gate.py`](verifier_gate.py) | #11 Verifier gate | Separating a worker draft from the side effect until a concrete contract check passes. |
 
 ```bash
 python examples/retry_with_backoff.py
+python examples/verifier_gate.py
 ```
 
 ## Mapping the demo onto a real tool call
