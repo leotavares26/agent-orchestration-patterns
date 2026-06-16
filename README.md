@@ -122,6 +122,18 @@ Start simple. Reach for a heavier pattern only when a lighter one demonstrably b
 
 > Keep the verifier smaller than the worker. The best version is often boring: unit tests, JSON Schema, type checks, allowlists, and a short failure message the agent can act on.
 
+
+## 12. Budgeted loop / runtime brakes
+
+**Problem:** Long-running agents fail by quietly doing "one more step" forever — polling, retrying, browsing, or spending tokens without a clear stop condition.
+
+**Shape:** Put every loop under explicit budgets: max iterations, wall-clock time, spend/tool-call caps, and escalation thresholds. Persist the budget state so a restart does not reset the counter. Each pass does a cheap progress check and chooses one of three outcomes: continue, checkpoint, or stop/escalate.
+
+**Use when:** Agents run unattended, watch queues, process batches, or operate on tasks where success may take many small steps.
+**Avoid when:** The work is a fixed one-shot pipeline. Even then, keep a timeout — it is still a budget, just a boring one.
+
+> Pairs with **Retry & error recovery** and **Memory-augmented agent**: retries need a budget, and durable state keeps runtime brakes from disappearing after a crash.
+
 ---
 
 ## Worked examples
