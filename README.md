@@ -142,6 +142,7 @@ The patterns above are deliberately prose-first — the tradeoffs matter more th
 
 - [`retry_with_backoff.py`](examples/retry_with_backoff.py) — Pattern #10, error classification + exponential backoff under a budget. Run it with `python examples/retry_with_backoff.py`.
 - [`verifier_gate.py`](examples/verifier_gate.py) — Pattern #11, separating a worker draft from the side effect until a contract check passes. Run it with `python examples/verifier_gate.py`.
+- [`budgeted_loop.py`](examples/budgeted_loop.py) — Pattern #12, persisting loop counters so runtime brakes survive restarts. Run it with `python examples/budgeted_loop.py`.
 
 More examples get added alongside the patterns over time.
 

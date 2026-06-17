@@ -8,10 +8,12 @@ the bits you need — no SDK, no API key, no network.
 |---|---|---|
 | [`retry_with_backoff.py`](retry_with_backoff.py) | #10 Retry & error recovery | Classifying transient vs. malformed vs. permanent failures, exponential backoff with jitter, and a budget that stops runaway retries. |
 | [`verifier_gate.py`](verifier_gate.py) | #11 Verifier gate | Separating a worker draft from the side effect until a concrete contract check passes. |
+| [`budgeted_loop.py`](budgeted_loop.py) | #12 Budgeted loop / runtime brakes | Persisting loop counters so iteration, tool-call, and wall-clock budgets survive restarts. |
 
 ```bash
 python examples/retry_with_backoff.py
 python examples/verifier_gate.py
+python examples/budgeted_loop.py
 ```
 
 ## Mapping the demo onto a real tool call
