@@ -134,6 +134,17 @@ Start simple. Reach for a heavier pattern only when a lighter one demonstrably b
 
 > Pairs with **Retry & error recovery** and **Memory-augmented agent**: retries need a budget, and durable state keeps runtime brakes from disappearing after a crash.
 
+## 13. State machine / workflow graph
+
+**Problem:** Open-ended loops are flexible, but they can blur the difference between planning, tool use, review, and side effects. Once the same loop handles every phase, it becomes hard to know which tools are allowed, what state is required, or why the agent moved on.
+
+**Shape:** Model the workflow as named states with explicit transitions: `triage -> plan -> act -> verify -> finish` (or `escalate`). Each state owns a narrow prompt, allowed tools, required inputs, and exit criteria. Persist the current state and transition reason with the task record.
+
+**Use when:** The process has repeatable phases, compliance or auditability matters, or different steps need different permissions. This is especially useful for support flows, code-review agents, data pipelines, and any agent that touches production systems.
+**Avoid when:** The task is genuinely exploratory and you do not yet know the phases. Start with a simple loop, then promote the recurring shape into a graph once it repeats.
+
+> Pairs with **Tool-use guardrails** and **Verifier gate**: state boundaries make it easier to restrict tools before review and require verification before side effects.
+
 ---
 
 ## Worked examples
