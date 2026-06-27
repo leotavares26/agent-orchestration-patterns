@@ -151,6 +151,7 @@ Start simple. Reach for a heavier pattern only when a lighter one demonstrably b
 
 The patterns above are deliberately prose-first — the tradeoffs matter more than any one implementation. Where a pattern benefits from seeing the control flow in code, there's a runnable, dependency-free example under [`examples/`](examples/):
 
+- [`tool_guardrails.py`](examples/tool_guardrails.py) — Pattern #7, state allowlists, argument checks, and approval gates before dispatch. Run it with `python examples/tool_guardrails.py`.
 - [`retry_with_backoff.py`](examples/retry_with_backoff.py) — Pattern #10, error classification + exponential backoff under a budget. Run it with `python examples/retry_with_backoff.py`.
 - [`verifier_gate.py`](examples/verifier_gate.py) — Pattern #11, separating a worker draft from the side effect until a contract check passes. Run it with `python examples/verifier_gate.py`.
 - [`budgeted_loop.py`](examples/budgeted_loop.py) — Pattern #12, persisting loop counters so runtime brakes survive restarts. Run it with `python examples/budgeted_loop.py`.
