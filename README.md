@@ -145,6 +145,17 @@ Start simple. Reach for a heavier pattern only when a lighter one demonstrably b
 
 > Pairs with **Tool-use guardrails** and **Verifier gate**: state boundaries make it easier to restrict tools before review and require verification before side effects.
 
+## 14. Idempotent side effects
+
+**Problem:** Agents often retry after ambiguous failures. If the side effect already happened, for example sending email, creating a ticket, charging a card, or merging a PR, a blind retry can duplicate the action and make the recovery worse than the original error.
+
+**Shape:** Treat every external write as an idempotent command: attach a stable operation ID, check for an existing result before creating a new one, and record the outcome durably. On retry, replay the same operation ID and return the original result instead of doing the side effect again.
+
+**Use when:** A tool call changes shared state, especially across flaky networks or long-running workflows where the agent may be restarted.
+**Avoid when:** The action is purely read-only, or the underlying system already provides exactly-once semantics you trust. Even then, log the operation ID so humans can audit what happened.
+
+> Pairs with **Retry & error recovery** and **State machine / workflow graph**: retries need dedupe keys, and workflow state gives those keys somewhere durable to live.
+
 ---
 
 ## Worked examples
