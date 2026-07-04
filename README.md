@@ -168,6 +168,7 @@ The patterns above are deliberately prose-first — the tradeoffs matter more th
 - [`verifier_gate.py`](examples/verifier_gate.py) — Pattern #11, separating a worker draft from the side effect until a contract check passes. Run it with `python examples/verifier_gate.py`.
 - [`budgeted_loop.py`](examples/budgeted_loop.py) — Pattern #12, persisting loop counters so runtime brakes survive restarts. Run it with `python examples/budgeted_loop.py`.
 - [`state_machine_workflow.py`](examples/state_machine_workflow.py) — Pattern #13, explicit states, transition reasons, and per-state tool permissions. Run it with `python examples/state_machine_workflow.py`.
+- [`idempotent_side_effects.py`](examples/idempotent_side_effects.py) — Pattern #14, stable operation IDs and replay-safe external writes. Run it with `python examples/idempotent_side_effects.py`.
 
 More examples get added alongside the patterns over time.
 
