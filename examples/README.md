@@ -6,6 +6,7 @@ the bits you need — no SDK, no API key, no network.
 
 | Example | Pattern | What it shows |
 |---|---|---|
+| [`reflection_loop.py`](reflection_loop.py) | #4 Reflection / self-critique | Bounded generate -> critique -> revise loop driven by a concrete rubric, stopping as soon as the draft is clean. |
 | [`tool_guardrails.py`](tool_guardrails.py) | #7 Tool-use guardrails | Checking state allowlists, required arguments, and human approval before a proposed tool call is dispatched. |
 | [`fan_out_gather.py`](fan_out_gather.py) | #9 Parallel fan-out / gather | Running independent checks concurrently, then deduping and ranking findings before choosing the next step. |
 | [`retry_with_backoff.py`](retry_with_backoff.py) | #10 Retry & error recovery | Classifying transient vs. malformed vs. permanent failures, exponential backoff with jitter, and a budget that stops runaway retries. |
@@ -15,6 +16,7 @@ the bits you need — no SDK, no API key, no network.
 | [`idempotent_side_effects.py`](idempotent_side_effects.py) | #14 Idempotent side effects | Using stable operation IDs so retries replay an existing write instead of duplicating it. |
 
 ```bash
+python examples/reflection_loop.py
 python examples/tool_guardrails.py
 python examples/fan_out_gather.py
 python examples/retry_with_backoff.py
