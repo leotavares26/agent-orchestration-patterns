@@ -162,6 +162,7 @@ Start simple. Reach for a heavier pattern only when a lighter one demonstrably b
 
 The patterns above are deliberately prose-first — the tradeoffs matter more than any one implementation. Where a pattern benefits from seeing the control flow in code, there's a runnable, dependency-free example under [`examples/`](examples/):
 
+- [`router_dispatcher.py`](examples/router_dispatcher.py) — Pattern #3, a keyword classifier that scores a request against each route and dispatches to exactly one specialist, with a fallback when nothing matches. Run it with `python examples/router_dispatcher.py`.
 - [`reflection_loop.py`](examples/reflection_loop.py) — Pattern #4, a bounded generate -> critique -> revise loop driven by a concrete rubric. Run it with `python examples/reflection_loop.py`.
 - [`tool_guardrails.py`](examples/tool_guardrails.py) — Pattern #7, state allowlists, argument checks, and approval gates before dispatch. Run it with `python examples/tool_guardrails.py`.
 - [`fan_out_gather.py`](examples/fan_out_gather.py) — Pattern #9, concurrent independent checks with a deterministic gather step. Run it with `python examples/fan_out_gather.py`.
