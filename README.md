@@ -164,6 +164,7 @@ The patterns above are deliberately prose-first — the tradeoffs matter more th
 
 - [`router_dispatcher.py`](examples/router_dispatcher.py) — Pattern #3, a keyword classifier that scores a request against each route and dispatches to exactly one specialist, with a fallback when nothing matches. Run it with `python examples/router_dispatcher.py`.
 - [`reflection_loop.py`](examples/reflection_loop.py) — Pattern #4, a bounded generate -> critique -> revise loop driven by a concrete rubric. Run it with `python examples/reflection_loop.py`.
+- [`human_in_the_loop.py`](examples/human_in_the_loop.py) — Pattern #6, routing on reversibility and blast radius so only high-stakes actions pause for approval. Run it with `python examples/human_in_the_loop.py`.
 - [`tool_guardrails.py`](examples/tool_guardrails.py) — Pattern #7, state allowlists, argument checks, and approval gates before dispatch. Run it with `python examples/tool_guardrails.py`.
 - [`fan_out_gather.py`](examples/fan_out_gather.py) — Pattern #9, concurrent independent checks with a deterministic gather step. Run it with `python examples/fan_out_gather.py`.
 - [`retry_with_backoff.py`](examples/retry_with_backoff.py) — Pattern #10, error classification + exponential backoff under a budget. Run it with `python examples/retry_with_backoff.py`.
