@@ -6,6 +6,7 @@ the bits you need — no SDK, no API key, no network.
 
 | Example | Pattern | What it shows |
 |---|---|---|
+| [`plan_and_execute.py`](plan_and_execute.py) | #2 Plan-and-execute | Drafting an explicit ordered plan, executing it step by step, and replanning only the remaining steps when an observation contradicts the plan. |
 | [`router_dispatcher.py`](router_dispatcher.py) | #3 Router / dispatcher | Classifying a request against each route's signals, then dispatching to exactly one specialist handler with a fallback when nothing scores. |
 | [`reflection_loop.py`](reflection_loop.py) | #4 Reflection / self-critique | Bounded generate -> critique -> revise loop driven by a concrete rubric, stopping as soon as the draft is clean. |
 | [`human_in_the_loop.py`](human_in_the_loop.py) | #6 Human-in-the-loop | Pausing at a checkpoint for human approval, routing on reversibility and blast radius so only high-stakes actions stop. |
@@ -18,6 +19,7 @@ the bits you need — no SDK, no API key, no network.
 | [`idempotent_side_effects.py`](idempotent_side_effects.py) | #14 Idempotent side effects | Using stable operation IDs so retries replay an existing write instead of duplicating it. |
 
 ```bash
+python examples/plan_and_execute.py
 python examples/router_dispatcher.py
 python examples/reflection_loop.py
 python examples/human_in_the_loop.py

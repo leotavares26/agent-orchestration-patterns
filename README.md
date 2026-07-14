@@ -162,6 +162,7 @@ Start simple. Reach for a heavier pattern only when a lighter one demonstrably b
 
 The patterns above are deliberately prose-first — the tradeoffs matter more than any one implementation. Where a pattern benefits from seeing the control flow in code, there's a runnable, dependency-free example under [`examples/`](examples/):
 
+- [`plan_and_execute.py`](examples/plan_and_execute.py) — Pattern #2, drafting an explicit ordered plan, running it step by step, and replanning only the remaining steps when an observation contradicts the plan (here a paywalled source). Run it with `python examples/plan_and_execute.py`.
 - [`router_dispatcher.py`](examples/router_dispatcher.py) — Pattern #3, a keyword classifier that scores a request against each route and dispatches to exactly one specialist, with a fallback when nothing matches. Run it with `python examples/router_dispatcher.py`.
 - [`reflection_loop.py`](examples/reflection_loop.py) — Pattern #4, a bounded generate -> critique -> revise loop driven by a concrete rubric. Run it with `python examples/reflection_loop.py`.
 - [`human_in_the_loop.py`](examples/human_in_the_loop.py) — Pattern #6, routing on reversibility and blast radius so only high-stakes actions pause for approval. Run it with `python examples/human_in_the_loop.py`.
