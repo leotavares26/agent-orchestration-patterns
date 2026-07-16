@@ -6,6 +6,7 @@ the bits you need — no SDK, no API key, no network.
 
 | Example | Pattern | What it shows |
 |---|---|---|
+| [`react_loop.py`](react_loop.py) | #1 ReAct loop | Interleaving Thought -> Action -> Observation so each next action is decided from the running scratchpad after the last observation, stopping on a final answer or a step budget. |
 | [`plan_and_execute.py`](plan_and_execute.py) | #2 Plan-and-execute | Drafting an explicit ordered plan, executing it step by step, and replanning only the remaining steps when an observation contradicts the plan. |
 | [`router_dispatcher.py`](router_dispatcher.py) | #3 Router / dispatcher | Classifying a request against each route's signals, then dispatching to exactly one specialist handler with a fallback when nothing scores. |
 | [`reflection_loop.py`](reflection_loop.py) | #4 Reflection / self-critique | Bounded generate -> critique -> revise loop driven by a concrete rubric, stopping as soon as the draft is clean. |
@@ -19,6 +20,7 @@ the bits you need — no SDK, no API key, no network.
 | [`idempotent_side_effects.py`](idempotent_side_effects.py) | #14 Idempotent side effects | Using stable operation IDs so retries replay an existing write instead of duplicating it. |
 
 ```bash
+python examples/react_loop.py
 python examples/plan_and_execute.py
 python examples/router_dispatcher.py
 python examples/reflection_loop.py
